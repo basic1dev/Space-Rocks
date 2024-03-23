@@ -31,7 +31,9 @@ class Spaceship(GameObject):
 
     def __init__(self, position, create_bullet_callback):
         self.create_bullet_callback = create_bullet_callback
-        self.laser_sound = load_sound("laser")
+
+        # Initialize the sound to a variable 
+        self.laser_sound = load_sound("laser.wav")
         # Make a copy of the original UP vector
         self.direction = Vector2(UP)
         super().__init__(position, load_sprite('spaceship - 3'), Vector2(0))
@@ -58,6 +60,7 @@ class Spaceship(GameObject):
         bullet_velocity = self.direction * self.BULLET_SPEED + self.velocity
         bullet = Bullet(self.position, bullet_velocity)
         self.create_bullet_callback(bullet)
+        # The sound is played
         self.laser_sound.play()
 
 
@@ -73,7 +76,7 @@ class Asteroid(GameObject):
             1: 0.25
         }
         scale = size_to_scale[size]
-        sprite = rotozoom(load_sprite("asteroid"), 0, scale)
+        sprite = rotozoom(load_sprite("asteroid - 3"), 0, scale)
         super().__init__(position, sprite, get_random_velocity(1, 3))
 
 

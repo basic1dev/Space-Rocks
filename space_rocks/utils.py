@@ -4,6 +4,7 @@ from pygame import Color
 from pygame.image import load
 from pygame.math import Vector2
 from pygame.mixer import Sound
+#from pygame.mixer_music import load_music
 
 
 def load_sprite(name, with_alpha=True):
@@ -19,8 +20,12 @@ def load_sprite(name, with_alpha=True):
         return loaded_sprite.convert()
     
 def load_sound(name):
-    path = f"assets/sounds/{name}.wav"
+    path = f"assets/sounds/{name}"
     return Sound(path)
+
+def load_music(name):
+    path = f"assets/sounds/{name}"
+    return load(path)
     
 def wrap_position(position, surface):
     x, y = position
@@ -45,3 +50,4 @@ def print_text(surface, text, font, color=Color("tomato")):
     rect.center = Vector2(surface.get_size()) / 2
 
     surface.blit(text_surface, rect)
+

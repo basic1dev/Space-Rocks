@@ -17,6 +17,7 @@ class SpaceRocks:
         # for the background image
         self.background = load_sprite("space", False)
 
+
         self.clock = pygame.time.Clock()
 
         self.font = pygame.font.Font(None, 64)
@@ -55,6 +56,7 @@ class SpaceRocks:
 
     def main_loop(self):
         while True: 
+        
             # Three steps would occur at each frame. 
             self._handle_input()
             self._process_game_logic()
@@ -119,7 +121,7 @@ class SpaceRocks:
                 self.bullets.remove(bullet)
 
         if not self.asteroids and self.spaceship:
-            self.message = "Get Good"
+            self.message = "You won!"
 
     def _draw(self):
         # cover the game with the backgound, since the image is as the same size as the background then blit is (0,0)
